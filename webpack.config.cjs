@@ -8,4 +8,10 @@ module.exports = {
     filename: "main.cjs",
     path: path.resolve(__dirname, "dist"),
   },
+  externals: {
+    serialport: "commonjs serialport",
+  },
+  resolve: {
+    extensions: [".js"],
+  },
 };
