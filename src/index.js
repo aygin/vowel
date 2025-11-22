@@ -1,5 +1,5 @@
-import fs from "fs";
-import OpenAI from "openai";
+// import fs from "fs";
+// import OpenAI from "openai";
 import { detectVowels } from "./utils/detect-vowels";
 import { test_transcript } from "./services/test-transcript";
 import { playAudio } from "./utils/player";
