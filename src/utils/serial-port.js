@@ -1,15 +1,39 @@
 import { SerialPort } from "serialport";
-import { USB_BAUD_RATE, USB_SERIAL_PORT } from "../services/constants";
+import { USB_BAUD_RATE } from "../services/constants";
 
 let port = null;
 
-const initSerialPort = () => {
+export const findConnectedPort = async () => {
+  const portPathRegex = new RegExp(/^\/dev\/tty\.usbserial-\d+$/);
+  let foundPort = "";
+  const currentPorts = await SerialPort.list();
+  for (const port of currentPorts) {
+    // console.log("port is", port);
+    if (port.path !== undefined && portPathRegex.test(port.path)) {
+      console.log("FOUND the port!", port.path);
+      foundPort = port.path;
+      break;
+    }
+  }
+  if (foundPort === "") {
+    console.log("PORT not FOUND!!!");
+  }
+  return foundPort;
+};
+
+const initSerialPort = async () => {
   if (port && port.isOpen) {
     return port;
   }
 
+  const portPathName = await findConnectedPort();
+
+  if (portPathName === "") {
+    return;
+  }
+
   port = new SerialPort({
-    path: USB_SERIAL_PORT,
+    path: portPathName,
     baudRate: USB_BAUD_RATE,
   });
 
@@ -20,8 +44,8 @@ const initSerialPort = () => {
   return port;
 };
 
-export const sendSignal = () => {
-  const serialPort = initSerialPort();
+export const sendSignal = async () => {
+  const serialPort = await initSerialPort();
 
   serialPort.write("A", function (err) {
     if (err) {
