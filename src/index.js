@@ -1,15 +1,21 @@
 // import fs from "fs";
 // import OpenAI from "openai";
-import { detectVowels } from "./utils/detect-vowels";
+import { addPhonetics, detectVowels } from "./utils/detect-vowels";
 import { test_transcript } from "./services/test-transcript";
 import { playAudio } from "./utils/player";
+import { initSerialPort } from "./utils/serial-port";
 
-playAudio();
+await initSerialPort();
+const transcriptWithPhonetics = await addPhonetics(test_transcript)
 
-test_transcript.forEach((obj) => {
+await playAudio();
+transcriptWithPhonetics.forEach((obj) => {
+  // const startTime = obj.start.toFixed(3) * 1000;
+  // const endTime = obj.end.toFixed(3) * 1000;
+  // const avgTime = ((startTime + endTime) / 2).toFixed(3);
   setTimeout(() => {
     detectVowels(obj);
-  }, obj.start.toFixed(3) * 1000);
+  }, obj.end.toFixed(3) * 1000);
 });
 
 // const openai = new OpenAI({
