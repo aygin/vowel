@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "openai": "^5.23.1",
+    "phonemizer": "^1.2.1",
     "serialport": "^13.0.0"
   },
   "devDependencies": {

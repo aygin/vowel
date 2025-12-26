@@ -2,8 +2,9 @@ import { SerialPort } from "serialport";
 import { USB_BAUD_RATE } from "../services/constants";
 
 let port = null;
+let connectedSerialPort = null;
 
-export const findConnectedPort = async () => {
+const findConnectedPort = async () => {
   const portPathRegex = new RegExp(/^\/dev\/tty\.usbserial-\d+$/);
   let foundPort = "";
   const currentPorts = await SerialPort.list();
@@ -21,7 +22,7 @@ export const findConnectedPort = async () => {
   return foundPort;
 };
 
-const initSerialPort = async () => {
+export const initSerialPort = async () => {
   if (port && port.isOpen) {
     return port;
   }
@@ -40,17 +41,19 @@ const initSerialPort = async () => {
   port.on("error", (err) => {
     console.error("Serial port error:", err.message);
   });
-
+  connectedSerialPort = port;
   return port;
 };
 
-export const sendSignal = async () => {
-  const serialPort = await initSerialPort();
-
-  serialPort.write("A", function (err) {
+export const sendSignal = async (vowelType) => {
+  if(connectedSerialPort === null) {
+    return;
+  }
+  const signalToSend = vowelType === "long" ? "L" : "S"
+  connectedSerialPort.write(signalToSend, function (err) {
     if (err) {
       return console.log("Error on write:", err.message);
     }
-    console.log("✅ Signal sent to Arduino");
+    console.log("✅ Signal sent to Arduino", signalToSend);
   });
 };
