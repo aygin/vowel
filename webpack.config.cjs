@@ -5,7 +5,7 @@ module.exports = {
   mode: "development",
   target: "node",
   output: {
-    filename: "main.cjs",
+    filename: "main.js",
     path: path.resolve(__dirname, "dist"),
     clean: true
   },
@@ -15,4 +15,27 @@ module.exports = {
   resolve: {
     extensions: [".js"],
   },
+  module: {
+  rules: [
+      {
+        test: /\.(?:js|mjs|cjs)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            targets: "defaults",
+            presets: [
+              ['@babel/preset-env']
+            ]
+          }
+        }
+      }
+    ]
+  },
+  ignoreWarnings: [
+    {
+      module: /node_modules\/@eshaz\/web-worker/,
+      message: /Critical dependency: the request of a dependency is an expression/,
+    },
+  ],
 };

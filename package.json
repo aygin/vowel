@@ -8,16 +8,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.cjs",
-    "start": "npm run build && node dist/main.cjs"
+    "start": "npm run build && node dist/main.js"
   },
   "dependencies": {
     "audio-decode": "^2.2.3",
+    "express": "^5.2.1",
     "openai": "^5.23.1",
     "phonemizer": "^1.2.1",
     "serialport": "^13.0.0"
   },
   "devDependencies": {
-    "webpack": "^5.102.1",
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "babel-loader": "^10.0.0",
+    "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1"
   }
 }
