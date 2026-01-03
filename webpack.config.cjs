@@ -7,6 +7,7 @@ module.exports = {
   output: {
     filename: "main.cjs",
     path: path.resolve(__dirname, "dist"),
+    clean: true
   },
   externals: {
     serialport: "commonjs serialport",
