@@ -1,0 +1,46 @@
+:root {
+    --body-bg-color: #0d1117;
+    --body-primary-color: #e0e0e0;
+    --mouth-max-height: 150px;
+    --mouth-min-height: 10px;
+    --mouth-width: 10px;
+}
+
+body {
+    background-color: var(--body-bg-color);
+    color: var(--body-primary-color);
+}
+
+.main-container {
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+#application {
+    padding: 1rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.mouth-container {
+    padding: 1rem;
+    border: 1px solid var(--body-primary-color);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+    min-height: calc(var(--mouth-max-height) + 1rem);
+}
+
+.mouth-span {
+    height: var(--mouth-max-height);
+    width: var(--mouth-width);
+    border-radius: 5px;
+    background-color: var(--body-primary-color);
+}
