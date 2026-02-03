@@ -1,3 +1,4 @@
+import { attachTranscribeClickListener } from "./handleTranscribeClick";
 import  "./styles.css";
 
 const MOUTH_RESOLUTION = 21;
@@ -25,7 +26,7 @@ const renderSpanMouthElements = (applicationContainer) => {
             const span = renderedSpanEls[i];
             const spanHeight = `${(gaussian(i) * 150).toFixed(2)}px`
             span.style.height = spanHeight;
-            console.log(`#### set span number ${i} height to ` , spanHeight)
+            // console.log(`#### set span number ${i} height to ` , spanHeight)
         }
     } , 2000);
 }
@@ -49,4 +50,6 @@ window.onload = () => {
     } else {
         console.error("ERROR in finding element!");
     }
+    //attack button click function
+    attachTranscribeClickListener();
 }

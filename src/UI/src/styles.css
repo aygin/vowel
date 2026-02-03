@@ -11,6 +11,17 @@ body {
     color: var(--body-primary-color);
 }
 
+button {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--body-primary-color);
+    border: 2px solid var(--body-primary-color);
+    background: transparent;
+    border-radius: 5px;
+}
+
 .main-container {
     display: flex;
     padding: 1rem;

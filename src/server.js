@@ -12,6 +12,15 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../ui/index.html'));
 });
 
+app.post('/transcribe' , (req , res) => {
+  const {headers} = req;
+  console.log("we got a transcribe request!" , headers['content-language']);
+  res.send({
+    status: 200,
+    audioData: ['this can be audio data!']
+  })
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
