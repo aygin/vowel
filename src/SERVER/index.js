@@ -1,9 +1,9 @@
 // import fs from "fs";
 // import OpenAI from "openai";
-import { addPhonetics, detectVowels } from "./utils/detect-vowels";
+import { addPhonetics, detectVowels } from "../utils/detect-vowels";
 import { voice_3_transcript } from "./services/test-transcript";
-import { playAudio } from "./utils/player";
-import { initSerialPort } from "./utils/serial-port";
+import { playAudio } from "../utils/player";
+import { initSerialPort } from "../utils/serial-port";
 
 import { decodeAudioData } from "./utils/decode-audio";
 

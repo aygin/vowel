@@ -6,7 +6,7 @@ const buildMode = process.env.NODE_ENV || "development"; // "production" | "deve
 
 module.exports = {
   entry: {
-    server: { import: './src/server.js', filename: 'server/[name].js' },
+    server: { import: './src/SERVER/server.js', filename: 'server/[name].js' },
     ui: { import: './src/UI/src/main.js', filename: 'ui/[name].js' },
     // styles: './src/UI/src/styles.css',
   },
