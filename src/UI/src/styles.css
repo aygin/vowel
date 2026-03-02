@@ -1,0 +1,58 @@
+:root {
+    --body-bg-color: #0d1117;
+    --body-primary-color: #e0e0e0;
+    --mouth-max-height: 150px;
+    --mouth-min-height: 10px;
+    --mouth-span-width: 1px;
+}
+
+body {
+    background-color: var(--body-bg-color);
+    color: var(--body-primary-color);
+}
+
+button {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--body-primary-color);
+    border: 2px solid var(--body-primary-color);
+    background: transparent;
+    border-radius: 5px;
+}
+
+.main-container {
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+#application {
+    padding: 1rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.mouth-container {
+    padding: 1rem;
+    border: 1px solid var(--body-primary-color);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+    min-height: calc(var(--mouth-max-height) + 1rem);
+}
+
+.mouth-span {
+    height: var(--mouth-min-height);
+    width: var(--mouth-span-width);
+    border-radius: 5px;
+    background-color: var(--body-primary-color);
+    border: 4px solid red;
+    transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}

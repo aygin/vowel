@@ -32,15 +32,17 @@ export const detectVowels = (chunk) => {
     const LONG_VOWEL_REGEX = /aɪ|eɪ|ɔɪ|aʊ|oʊ|iː|uː|ɑː|ɔː|ɜː/g;
     const isLongFound = chunk.phonetics.match(LONG_VOWEL_REGEX);
     if(isLongFound !== null) {
-      console.log("long vowel found" , isLongFound , " " , chunk.word);
+      // console.log("long vowel found" , isLongFound , " " , chunk.word);
       sendSignal("long");
+      return "long";
     }else{
       const SHORT_VOWEL_REGEX = /ɪ|ɛ|æ|ʌ|ɒ|ʊ|ə|ɑ|ɔ|e|i|o|u|a/g;
       const isShortFound = chunk.phonetics.match(SHORT_VOWEL_REGEX);
 
       if(isShortFound !== null) {
-        console.log("short vowel found" , isShortFound , " " , chunk.word);
+        // console.log("short vowel found" , isShortFound , " " , chunk.word);
         sendSignal("short");
+        return "short";
       }
     }
   }
