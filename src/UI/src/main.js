@@ -1,33 +1,22 @@
+import { animateMouth } from "./animateMouth";
 import { attachTranscribeClickListener } from "./handleTranscribeClick";
+import { GAUSSIAN_CENTER, MOUTH_ELEMENTS, MOUTH_RESOLUTION } from "./services/consts";
 import  "./styles.css";
-
-const MOUTH_RESOLUTION = 21;
-
-const GAUSSIAN_CENTER = Math.floor(MOUTH_RESOLUTION / 2);
-
-const renderedSpanEls = [];
 
 const renderSpanMouthElements = (applicationContainer) => {
     const mouthContainer = document.createElement("div");
     mouthContainer.classList.add('mouth-container');
     applicationContainer.appendChild(mouthContainer);
     for (let i = 0; i < MOUTH_RESOLUTION; i++) {
-            const span = document.createElement("span");
-            span.classList.add('mouth-span');
-            span.setAttribute('data-id' , `${i}`);
-            renderedSpanEls.push(span);
-            mouthContainer.appendChild(span);
-            // const spanHeight = `${(gaussian(i) * 150).toFixed(2)}px`
-            // span.style.height = spanHeight;
-            // console.log("#### set span height to " , spanHeight)
-        }
+        const span = document.createElement("span");
+        span.classList.add('mouth-span');
+        span.setAttribute('data-id' , `${i}`);
+        span.style.setProperty('--max-height' , `${(gaussian(i) * 150).toFixed(2)}px`);
+        MOUTH_ELEMENTS.push(span);
+        mouthContainer.appendChild(span);
+    }
     setTimeout(() => {
-        for (let i = 0; i < MOUTH_RESOLUTION; i++) {
-            const span = renderedSpanEls[i];
-            const spanHeight = `${(gaussian(i) * 150).toFixed(2)}px`
-            span.style.height = spanHeight;
-            // console.log(`#### set span number ${i} height to ` , spanHeight)
-        }
+        animateMouth();
     } , 2000);
 }
 

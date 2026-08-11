@@ -54,5 +54,15 @@ button {
     border-radius: 5px;
     background-color: var(--body-primary-color);
     border: 4px solid red;
-    transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    /* transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1); */
+}
+
+.mouth-span.open {
+    animation: bounceHeight 600ms cubic-bezier(0.075, 0.82, 0.165, 1) 1;
+}
+
+@keyframes bounceHeight {
+  0%   { height: var(--mouth-min-height); }
+  50%  { height: var(--max-height); }
+  100% { height: var(--mouth-min-height); }
 }

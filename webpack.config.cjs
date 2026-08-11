@@ -41,6 +41,10 @@ module.exports = {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
+      {
+        test: /\.(ogg|mp3|wav)$/i,
+        type: 'asset/resource',
+      }
     ]
   },
   plugins: [
